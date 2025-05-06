@@ -1,12 +1,12 @@
 import requests
 from colorama import Fore, Style, init
 
-# Initialize colorama for colored terminal output
+# Initialize colorama
 init(autoreset=True)
 
 def get_ip_info(ip):
     try:
-        print(f"{Fore.CYAN}Looking up information for IP: {ip}...\n")
+        print(f"\n{Fore.CYAN}Looking up information for IP: {ip}...\n")
         response = requests.get(f"http://ip-api.com/json/{ip}")
         api = response.json()
 
@@ -31,7 +31,12 @@ def get_ip_info(ip):
         print(f"{Fore.RED}Error: {e}")
 
 if __name__ == "__main__":
+    print(f"{Fore.MAGENTA}Press 'u' to return to the menu without doing a lookup...")
     ip = input(f"{Fore.BLUE}Enter IP address to lookup: {Fore.WHITE}")
-    get_ip_info(ip)
-    input(f"\n{Fore.MAGENTA}Press Enter to return to the menu...")
 
+    if ip.lower() == 'u':
+        print(f"{Fore.GREEN}Returning to menu...\n")
+    else:
+        get_ip_info(ip)
+        print(f"\n{Fore.MAGENTA}Press 'u' to return to the menu...")
+        input()
