@@ -1,4 +1,5 @@
 import requests
+import sys
 from colorama import Fore, Style, init
 
 # Initialize colorama
@@ -31,12 +32,12 @@ def get_ip_info(ip):
         print(f"{Fore.RED}Error: {e}")
 
 if __name__ == "__main__":
-    print(f"{Fore.MAGENTA}Press 'u' to return to the menu without doing a lookup...")
+    print(f"{Fore.MAGENTA}Type 'u' to return to the menu without lookup.")
     ip = input(f"{Fore.BLUE}Enter IP address to lookup: {Fore.WHITE}")
 
-    if ip.lower() == 'u':
-        print(f"{Fore.GREEN}Returning to menu...\n")
-    else:
-        get_ip_info(ip)
-        print(f"\n{Fore.MAGENTA}Press 'u' to return to the menu...")
-        input()
+    if ip.strip().lower() == 'u':
+        sys.exit(0)  # Exit early to return to menu in batch file
+
+    get_ip_info(ip)
+    input(f"\n{Fore.MAGENTA}Press Enter to return to the menu...")
+
