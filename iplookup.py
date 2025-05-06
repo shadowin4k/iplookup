@@ -33,4 +33,5 @@ def get_ip_info(ip):
 if __name__ == "__main__":
     ip = input(f"{Fore.BLUE}Enter IP address to lookup: {Fore.WHITE}")
     get_ip_info(ip)
-    input(f"\n{Fore.MAGENTA}Press Enter to exit...")
+    input(f"\n{Fore.MAGENTA}Press Enter to return to the menu...")
+
